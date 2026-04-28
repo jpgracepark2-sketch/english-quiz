@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>수능 영어 유형별 풀이 전략 퀴즈</title>
+<style>
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:'Apple SD Gothic Neo','Malgun Gothic','Nanum Gothic',sans-serif;background:#f5f7fa;min-height:100vh;display:flex;align-items:center;justify-content:center;padding:2rem}
+  .wrap{max-width:760px;width:100%;margin:0 auto}
+  .header{text-align:center;margin-bottom:2rem}
+  .badge{display:inline-block;background:#e6f1fb;color:#185fa5;font-size:13px;padding:5px 16px;border-radius:20px;margin-bottom:12px;font-weight:600}
+  h1{font-size:26px;font-weight:700;color:#1a2940;margin-bottom:8px}
+  .header p{font-size:15px;color:#6b7a8d}
+  .pbar-wrap{margin-bottom:1.5rem}
+  .pbar-bg{background:#dde3ec;border-radius:4px;height:6px;overflow:hidden}
+  .pbar-fill{height:100%;background:#185fa5;border-radius:4px;transition:width .4s}
+  .plabel{font-size:13px;color:#6b7a8d;text-align:right;margin-top:6px}
+  .card{background:#fff;border:1px solid #e0e6ef;border-radius:16px;padding:2rem;box-shadow:0 2px 12px rgba(0,0,0,.06)}
+  .q-type{font-size:12px;font-weight:700;color:#185fa5;background:#e6f1fb;padding:4px 12px;border-radius:12px;display:inline-block;margin-bottom:12px}
+  .q-num{font-size:13px;color:#8a97a8;margin-bottom:8px}
+  .q-text{font-size:18px;font-weight:600;color:#1a2940;line-height:1.65;margin-bottom:1.2rem}
+  .tip-box{background:#f0fbe6;border-left:4px solid #639922;padding:10px 14px;margin-bottom:1.2rem;font-size:13px;color:#3B6D11;border-radius:0 8px 8px 0;line-height:1.6}
+  .opts{display:flex;flex-direction:column;gap:10px}
+  .opt{padding:13px 18px;border:1.5px solid #dde3ec;border-radius:10px;font-size:15px;cursor:pointer;color:#1a2940;background:#fff;text-align:left;transition:all .15s;display:flex;align-items:center;gap:12px;line-height:1.5}
+  .opt:hover:not(:disabled){border-color:#185fa5;background:#f0f6ff}
+  .opt:disabled{cursor:default;opacity:.4}
+  .opt.correct{background:#eaf3de;border-color:#639922;color:#27500A;font-weight:600}
+  .opt.wrong{background:#fcebeb;border-color:#E24B4A;color:#791F1F}
+  .num{display:inline-flex;align-items:center;justify-content:center;width:28px;height:28px;min-width:28px;background:#e6f1fb;color:#185fa5;border-radius:50%;font-size:13px;font-weight:700}
+  .fb{margin-top:1.2rem;padding:14px 16px;border-radius:10px;font-size:14px;line-height:1.7;display:none}
+  .fb.show{display:block}
+  .fb.ok{background:#eaf3de;color:#27500A;border:1px solid #97C459}
+  .fb.hint{background:#faeeda;color:#633806;border:1px solid #EF9F27}
+  .nav{display:flex;justify-content:space-between;align-items:center;margin-top:1.5rem}
+  .score-lbl{font-size:14px;color:#6b7a8d}
+  .btn-next{padding:11px 28px;border-radius:10px;background:#185fa5;color:#fff;border:none;font-size:15px;font-weight:600;font-family:inherit;cursor:pointer;display:none}
+  .btn-next:hover{background:#0c447c}
+  .score-wrap{text-align:center;padding:2.5rem 1.5rem}
+  .score-big{font-size:60px;font-weight:700;color:#185fa5;margin-bottom:4px}
+  .score-sub{font-size:16px;color:#6b7a8d;margin-bottom:1.8rem}
+  .score-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:2rem}
+  .s-cell{background:#f5f7fa;border-radius:10px;padding:16px 8px;text-align:center;border:1px solid #e0e6ef}
+  .s-val{font-size:22px;font-weight:700;color:#1a2940}
+  .s-lbl{font-size:12px;color:#6b7a8d;margin-top:4px}
+  .sum-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:1.8rem;text-align:left}
+  .sum-item{background:#f5f7fa;border-radius:10px;padding:13px 15px;border:1px solid #e0e6ef}
+  .sum-t{font-size:12px;font-weight:700;color:#185fa5}
+  .sum-d{font-size:12px;color:#6b7a8d;margin-top:5px;line-height:1.5}
+  .btn-restart{width:100%;padding:14px;border-radius:10px;border:1.5px solid #c5d0de;background:#fff;color:#1a2940;font-size:16px;font-weight:600;font-family:inherit;cursor:pointer}
+  .btn-restart:hover{background:#f0f4f8}
+  .sec-title{font-size:12px;font-weight:700;color:#8a97a8;letter-spacing:.6px;margin-bottom:12px;margin-top:1.5rem}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="header">
+    <div class="badge">고1 영어 — 모의고사 전략 복습</div>
+    <h1>수능 영어 유형별 풀이 전략 퀴즈</h1>
+    <p>총 12문항 · 맞힐 때까지 다시 도전할 수 있어요</p>
+  </div>
+  <div class="pbar-wrap">
+    <div class="pbar-bg"><div class="pbar-fill" id="pbar" style="width:0%"></div></div>
+    <div class="plabel" id="plabel">1 / 12 문항</div>
+  </div>
+  <div id="area"></div>
+</div>
+
+<script>
+const qs=[
+  {type:"유형1 — 의미·주제",q:"의미·주제 계열 문제(목적/주장/요지/제목)를 풀 때, 글의 핵심 주장이 가장 집중되는 곳은 어디일까요?",opts:["글의 중간 부분","첫 문장과 마지막 문장","두 번째 문단 첫 문장","선택지 중 가장 구체적인 것"],ans:1,hint:"핵심 주장은 글의 시작과 끝에 배치되는 경우가 가장 많아요. 중간 부분은 근거나 예시가 주를 이뤄요.",fb:"첫 문장과 마지막 문장에 핵심 주장이 집중됩니다. 이 두 문장을 먼저 읽는 것이 가장 효율적인 전략이에요.",tip:"⚡ 요지·주제·제목은 같은 능력을 측정해요. 핵심 주장 문장을 먼저 찾아라!"},
+  {type:"유형1 — 의미·주제",q:"다음 중 글의 '진짜 핵심'이 나오는 표현은 무엇인가요?",opts:["In addition, Furthermore","However, But, Yet, Nevertheless","For example, Such as","First, Second, Third"],ans:1,hint:"앞 내용을 '뒤집는' 표현 뒤에 작가의 진짜 의도가 나와요. 추가·예시·순서 표현이 아닌, 방향을 전환하는 표현을 찾아보세요.",fb:"역접 표현(However, But, Yet, Nevertheless) 뒤에 오는 내용이 글의 진짜 핵심입니다. 앞부분은 도입이나 반론이에요.",tip:"💡 강조 표현도 체크: The key is / It is important that / What matters is"},
+  {type:"유형1 — 의미·주제",q:"제목 문제에서 정답을 고를 때의 핵심 기준은 무엇인가요?",opts:["가장 구체적인 사실을 담은 선택지","글 전체의 메시지를 응축한 선택지","가장 길고 자세한 선택지","마지막 문단 내용만 담은 선택지"],ans:1,hint:"제목은 글의 '일부'가 아니라 '전체'를 대표해야 해요. 너무 좁거나 너무 포괄적인 선택지는 먼저 소거해보세요.",fb:"제목 문제는 단순 사실 나열이 아닌, 글 전체 메시지를 응축한 선택지를 골라야 합니다.",tip:"🗑️ 소거법: 너무 포괄적이거나 너무 좁게 쓰인 선택지를 먼저 제거!"},
+  {type:"유형2 — 내용 일치",q:"내용 일치 문제에서 선택지를 확인하는 가장 효율적인 순서는 무엇인가요?",opts:["선택지 ①~⑤ 모두 읽은 뒤 지문 전체 독해","선택지 순서 = 지문 순서로 ①부터 차례로 대조","지문을 먼저 완독 후 선택지 확인","어려운 선택지부터 역순으로 확인"],ans:1,hint:"지문과 선택지의 순서는 일치하도록 출제됩니다. 지문 전체를 읽을 필요 없이, 선택지 키워드를 지문에서 순서대로 찾아보세요.",fb:"선택지 순서 = 지문 순서입니다. ①부터 차례로 지문과 대조하면 시간을 크게 절약할 수 있어요.",tip:"📌 숫자·날짜·고유명사는 반드시 정확히 확인 — 자주 등장하는 함정!"},
+  {type:"유형2 — 내용 일치",q:"도표 문제에서 오답을 빠르게 찾는 방법으로 가장 옳은 것은?",opts:["도표 전체를 천천히 분석한다","선택지에서 언급한 두 항목을 그래프에서 바로 찾아 수치를 비교한다","제일 큰 수치와 작은 수치만 확인한다","선택지를 무시하고 그래프 전체를 읽는다"],ans:1,hint:"도표 전체를 분석할 시간은 없어요. 선택지가 어떤 두 항목을 비교하는지 먼저 파악하고, 그 부분만 그래프에서 찾아보세요.",fb:"선택지에서 언급한 두 항목을 그래프에서 바로 찾아 수치를 비교하는 것이 핵심입니다.",tip:"🔢 비교 표현(larger than, twice as much)을 중심으로 확인!"},
+  {type:"유형3 — 어법·어휘",q:"어법 문제에서 가장 출제 빈도가 높은 항목 두 가지는?",opts:["전치사 + 관계대명사 / 병렬 구조","동사·준동사 / 능동·수동","관계사 / 대명사·재귀대명사","형용사·부사 / 도치·강조"],ans:1,hint:"★★★★★ 최고 빈도 두 항목이에요. 한 문장에 동사가 두 개 있을 때 처리법과, -ing/-ed 중 어느 걸 쓸지를 생각해보세요.",fb:"동사·준동사(★★★★★)와 능동·수동(★★★★★)이 가장 출제 빈도가 높습니다.",tip:"⚡ 분사: 수식받는 명사가 능동이면 -ing, 수동이면 -ed"},
+  {type:"유형3 — 어법·어휘",q:"'A number of + 복수명사'와 'The number of + 복수명사' 중 복수 동사와 함께 쓰이는 것은?",opts:["The number of + 복수명사","A number of + 복수명사","둘 다 복수 동사","둘 다 단수 동사"],ans:1,hint:"'A number of'는 '많은 ~'이라는 뜻으로 복수 개념이에요. 'The number of'는 '~의 수'라는 단수 명사 개념이에요.",fb:"A number of + 복수명사 → 복수 동사 / The number of + 복수명사 → 단수 동사. 꼭 구분해서 외워두세요!",tip:"💡 수식어구를 괄호로 묶어 제거 후 주어 단수/복수 확인!"},
+  {type:"유형4 — 순서·삽입",q:"글의 순서를 배열할 때 활용해야 할 단서가 아닌 것은?",opts:["지시사·대명사(this, these, it, they)","정관사 the가 붙은 명사","연결어(However, Therefore, For example)","문단의 글자 수와 길이"],ans:3,hint:"순서 배열의 단서는 모두 '논리적 연결'과 관련 있어요. 지시사, 정관사, 연결어는 앞 문장과의 관계를 보여주지만, 나머지 하나는 내용과 무관해요.",fb:"글자 수와 길이는 순서 배열의 단서가 되지 않아요. 지시사·정관사·연결어로 논리 흐름을 파악하세요.",tip:"🔗 연결어: 역접(However), 결론(Therefore), 예시(For example), 추가(In addition)"},
+  {type:"유형4 — 순서·삽입",q:"문장 삽입 문제에서 정답 위치를 찾는 가장 좋은 방법은?",opts:["무작위로 각 위치에 넣어보며 읽는다","앞뒤 맥락이 자연스러운 위치를 찾아 핵심어를 대조한다","가장 빈 공간이 넓어 보이는 곳에 삽입한다","마지막 위치부터 역순으로 확인한다"],ans:1,hint:"삽입 문장 안의 지시사(this, the)나 연결어(however, therefore)가 앞 문장과의 관계를 알려줘요. 단서를 먼저 찾아보세요.",fb:"삽입 문장의 핵심어를 파악하고, 앞뒤 맥락이 자연스럽게 이어지는 위치를 찾는 것이 핵심입니다.",tip:"💡 삽입 문장에 however/therefore가 있으면 앞 문장과의 논리 관계부터 확인!"},
+  {type:"유형5 — 빈칸·요약",q:"빈칸 추론에서 가장 집중해서 읽어야 할 곳은?",opts:["글의 첫 문장","빈칸 바로 앞뒤 문장","선택지","글의 마지막 문장"],ans:1,hint:"빈칸 주변에는 그 빈칸을 설명하는 근거나 예시가 바로 붙어 있는 경우가 많아요. 멀리서 찾기 전에 가장 가까운 곳을 먼저 살펴보세요.",fb:"빈칸 바로 앞뒤 문장에 집중하세요. 근거·예시가 빈칸을 직접 설명합니다.",tip:"📋 보기를 먼저 훑은 후 지문을 읽으면 방향을 미리 잡을 수 있어요!"},
+  {type:"유형5 — 빈칸·요약",q:"요약문 문제에서 (A)와 (B)에 들어갈 내용의 특징으로 옳은 것은?",opts:["(A)는 세부 예시, (B)는 구체적 사실","(A)는 글의 핵심 소재, (B)는 결론·대조 개념","(A)와 (B)는 항상 반의어 관계","(A)는 도입, (B)는 글쓴이의 의견"],ans:1,hint:"요약문은 글 전체를 두 빈칸으로 압축해요. 하나는 글이 다루는 '소재', 다른 하나는 그에 대한 '결론이나 대조 개념'인 경우가 많아요.",fb:"(A)는 글의 핵심 소재, (B)는 그에 대한 결론·대조 개념이 주로 옵니다.",tip:"🗑️ 소거법: 지문 내용과 반대이거나 너무 범위가 넓은 보기를 먼저 제거!"},
+  {type:"유형6 — 장문 독해",q:"장문 독해 43~45번 풀이 전략으로 가장 옳은 것은?",opts:["(A)(B)(C)(D)를 모두 읽고 순서를 결정한다","(A)를 읽은 후 (B)(C)(D)의 첫 문장만 훑어 순서를 결정한다","제목 문제부터 먼저 풀고 전체 순서를 배열한다","45번 내용 일치부터 역순으로 푼다"],ans:1,hint:"장문은 시간이 많이 걸려요. 전체를 다 읽지 않고도 순서를 잡는 방법이 있어요. 각 단락의 '첫 문장'만으로도 흐름을 파악할 수 있답니다.",fb:"(A)를 읽은 후 (B)(C)(D)의 첫 문장만 훑어 순서를 결정합니다. 시간 부족 시 첫·마지막 문장만 읽어도 돼요.",tip:"👁️ 대명사(he, she, they)가 누구를 가리키는지 추적하며 읽어야 혼선이 없어요!"},
+];
+
+let cur=0,score=0,firstTry=true;
+
+function render(){
+  const a=document.getElementById('area');
+  if(cur>=qs.length){renderScore(a);return;}
+  const q=qs[cur];
+  const pct=Math.round((cur/qs.length)*100);
+  document.getElementById('pbar').style.width=pct+'%';
+  document.getElementById('plabel').textContent=(cur+1)+' / '+qs.length+' 문항';
+  firstTry=true;
+  a.innerHTML=`
+    <div class="card">
+      <div class="q-type">${q.type}</div>
+      <div class="q-num">Q${cur+1}</div>
+      <div class="q-text">${q.q}</div>
+      ${q.tip?`<div class="tip-box">${q.tip}</div>`:''}
+      <div class="opts">
+        ${q.opts.map((o,i)=>`<button class="opt" id="o${i}" onclick="pick(${i})">
+          <span class="num">${i+1}</span>${o}
+        </button>`).join('')}
+      </div>
+      <div class="fb" id="fb"></div>
+    </div>
+    <div class="nav">
+      <span class="score-lbl">맞힌 문항: <b style="color:#185fa5">${score}</b></span>
+      <button class="btn-next" id="nb" onclick="next()">${cur+1===qs.length?'결과 보기 →':'다음 문항 →'}</button>
+    </div>`;
+}
+
+function pick(i){
+  const q=qs[cur];
+  const fb=document.getElementById('fb');
+  const btn=document.getElementById('o'+i);
+  if(btn.disabled)return;
+  if(i===q.ans){
+    document.querySelectorAll('.opt').forEach(o=>o.disabled=true);
+    btn.classList.add('correct');
+    if(firstTry)score++;
+    fb.innerHTML='<b>✅ 정답!</b> '+q.fb;
+    fb.className='fb show ok';
+    document.getElementById('nb').style.display='inline-block';
+  } else {
+    firstTry=false;
+    btn.classList.add('wrong');
+    btn.disabled=true;
+    fb.innerHTML='<b>🤔 다시 생각해봐요!</b> 틀렸어요. 힌트를 참고해서 다시 골라보세요.<br><br><b>힌트:</b> '+q.hint;
+    fb.className='fb show hint';
+    setTimeout(()=>btn.classList.remove('wrong'),500);
+  }
+}
+
+function next(){cur++;render();}
+
+function renderScore(a){
+  document.getElementById('pbar').style.width='100%';
+  document.getElementById('plabel').textContent='완료!';
+  const pct=Math.round((score/qs.length)*100);
+  const msg=pct>=90?'완벽해요! 모의고사 전략을 완벽히 이해했어요 🎉':pct>=70?'잘했어요! 조금 더 복습하면 완벽할 거예요 👍':pct>=50?'괜찮아요! 틀린 유형을 다시 한번 확인해봐요 📚':'다시 한번 도전해봐요! 전략을 꼼꼼히 복습해볼게요 💪';
+  const stars=pct>=90?'★★★★★':pct>=70?'★★★★☆':pct>=50?'★★★☆☆':'★★☆☆☆';
+  a.innerHTML=`<div class="card score-wrap">
+    <div style="font-size:42px;margin-bottom:10px">${pct>=70?'🎯':'📖'}</div>
+    <div class="score-big">${score} / ${qs.length}</div>
+    <div style="font-size:22px;color:#185fa5;margin-bottom:10px">${stars}</div>
+    <div class="score-sub">${msg}</div>
+    <div class="score-grid">
+      <div class="s-cell"><div class="s-val">${score}</div><div class="s-lbl">처음에 맞힌 문항</div></div>
+      <div class="s-cell"><div class="s-val">${qs.length-score}</div><div class="s-lbl">힌트 후 맞힌 문항</div></div>
+      <div class="s-cell"><div class="s-val">${pct}%</div><div class="s-lbl">정답률</div></div>
+    </div>
+    <div class="sec-title">유형별 핵심 복습 포인트</div>
+    <div class="sum-grid">
+      ${[['유형1 — 의미·주제','첫/마지막 문장 + 역접 표현 집중'],['유형2 — 내용 일치','선택지 순서 = 지문 순서, 숫자 주의'],['유형3 — 어법·어휘','동사/준동사, 능동/수동 최우선 체크'],['유형4 — 순서·삽입','지시사·정관사·연결어로 논리 파악'],['유형5 — 빈칸·요약','빈칸 앞뒤 문장 집중, 소거법 활용'],['유형6 — 장문 독해','(A) 읽고 첫 문장으로 순서 결정']].map(([t,d])=>`
+        <div class="sum-item"><div class="sum-t">${t}</div><div class="sum-d">${d}</div></div>`).join('')}
+    </div>
+    <button class="btn-restart" onclick="restart()">처음부터 다시 풀기</button>
+  </div>`;
+}
+
+function restart(){cur=0;score=0;firstTry=true;render();}
+render();
+</script>
+</body>
+</html>
